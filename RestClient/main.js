@@ -3,34 +3,35 @@ function get_url() {
     return document.getElementById('testurl').value.trim();
 }
 
-function update_result_text(obj){
-    var pretty_json = JSON.stringify(obj,null, 2);
-    // Both below needed because else update stops after someone manually types in the text area
-    var data_element = document.getElementById('result-data')
-    data_element.innerHTML = pretty_json;
-    data_element.value = pretty_json;
-}
+function log_result(is_success, msg, data){
 
-function log_success(data){
-    document.getElementById('result').className = 'success-msg';
-    document.getElementById('result').innerHTML = 'Success';
-    update_result_text(data);
-}
+    var result_element = document.getElementById('result');
+    var result_data_element = document.getElementById('result-data');
 
-function log_error(err){
-    document.getElementById('result').className = 'failure-msg';
-    document.getElementById('result').innerHTML = 'Error';
-    update_result_text(err);
+    result_element.className = is_success ? 'success-msg' : 'failure-msg';
+
+    result_element.innerHTML = msg;
+
+    var pretty_json = JSON.stringify(data,null, 2);
+    // Both below needed else update of textarea stops fir any requests after someone manually types in the textarea
+    result_data_element.innerHTML = pretty_json;
+    result_data_element.value = pretty_json;
 }
 
 function do_http_req(axios_fn){
-    axios_fn(get_url())
+    var url = get_url();
+    if (url == ''){
+        log_result(false,'URL cannot be empty!',{});
+    }
+    else{
+        axios_fn(get_url())
     .then(function (response) {
-        log_success(response);
+        log_result(true,'Success',response);
     })
     .catch(function (error) {
-        log_error(error);
+        log_result(false,'Error',error);
     });
+    }
 }
 
 function do_get() {

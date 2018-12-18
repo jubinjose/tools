@@ -8,20 +8,22 @@
 </head>
 
 <body>
-    <span style="display:inline-block; width:20px">URL:</span>
-    <input id="testurl" type="text" size="200" style="margin: 30 0 10 20">
-    <div style="margin: 0 0 10 43">
-        <input type="button" value="get" onclick="do_get()">
-        <input type="button" value="post" onclick="do_post()">
-        <input type="button" value="put" onclick="do_put()">
-        <input type="button" value="delete" onclick="do_delete()">
-    </div>
-    <div id="result" style="margin: 0 0 10 43">
+    <div id='container'>
+        <span style="display:inline-block; width:20px">URL:</span>
+        <input id="testurl" type="text" size="200" style="margin: 30 0 10 20">
+        <div style="margin: 0 0 10 43">
+            <input type="button" value="get" onclick="do_get()">
+            <input type="button" value="post" onclick="do_post()">
+            <input type="button" value="put" onclick="do_put()">
+            <input type="button" value="delete" onclick="do_delete()">
+        </div>
+        <div id="result" style="margin: 0 0 10 43">
 
+        </div>
+        <textarea id="result-data" style="margin: 0 0 10 43; width:400px; height: 400px;"></textarea>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="./main.js"></script>
     </div>
-    <textarea id="result-data" style="margin: 0 0 10 43; width:400px; height: 400px;"></textarea>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./main.js"></script>
 </body>
 
 </html>

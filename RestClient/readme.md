@@ -1,7 +1,8 @@
 # Quick Rest Client
 
-This is a basic Rest Client I use to smoke test my CORS enabled REST APIs  
+This is a basic Rest Client I use to quick test my CORS enabled REST APIs from a web client
   
-At this time no support for parameters  
-  
-It uses Axios to make HTTP calls, so CORS applies unlike POSTMan etc. (which uses CURL)  
+No support for parameters as of now
+
+Why use this when there exist Postman , Fiddler etc. ?
+Because they use CURL and hence CORS won't apply while this use Axios fot http calls
